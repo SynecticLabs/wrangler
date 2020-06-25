@@ -60,7 +60,7 @@ fn strip_response_headers_prefix(parts: &mut ResponseParts) -> Result<(), failur
         if name.starts_with(HEADER_PREFIX) {
             let header_name = &name[HEADER_PREFIX.len()..];
             let header_name = HeaderName::from_bytes(header_name.as_bytes())?;
-            headers.insert(header_name, value.clone());
+            headers.append(header_name, value.clone());
         }
     }
     parts.headers = headers;
